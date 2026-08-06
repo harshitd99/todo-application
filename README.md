@@ -1,66 +1,76 @@
 # 🚀 Todo Application API
 
-A production-style **RESTful Todo Application Backend** built with **Node.js**, **Express.js**, and **MongoDB**, following industry-standard architecture and best practices.
+<div align="center">
 
-This project is being developed as a learning journey, with each feature implemented step by step to understand not only *how* to build a backend but also *why* real-world applications are structured this way.
+A **production-ready RESTful Todo API** built with **Node.js**, **Express.js**, and **MongoDB** following modern backend architecture and best development practices.
+
+Designed as a learning project to understand how scalable backend applications are built in real-world software development.
+
+![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?logo=node.js\&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-5.x-000000?logo=express)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?logo=mongodb\&logoColor=white)
+![JWT](https://img.shields.io/badge/Auth-JWT-orange)
+![License](https://img.shields.io/badge/License-MIT-blue)
+
+</div>
 
 ---
 
-# 📖 Table of Contents
+# 📑 Table of Contents
 
-* [Project Overview](#-project-overview)
-* [Features](#-features)
-* [Technology Stack](#-technology-stack)
-* [Project Structure](#-project-structure)
-* [Architecture](#-architecture)
-* [API Endpoints](#-api-endpoints)
-* [Installation](#-installation)
-* [Environment Variables](#-environment-variables)
-* [Running the Project](#-running-the-project)
-* [Development Roadmap](#-development-roadmap)
-* [Testing](#-testing)
-* [Future Improvements](#-future-improvements)
-* [Learning Outcomes](#-learning-outcomes)
-* [Author](#-author)
-* [License](#-license)
+* Project Overview
+* Features
+* Tech Stack
+* Project Structure
+* System Architecture
+* Database Schema
+* API Endpoints
+* Authentication Flow
+* Installation
+* Environment Variables
+* Running the Project
+* Sample API Requests
+* Error Response Format
+* Security Features
+* Development Roadmap
+* Testing
+* Future Improvements
+* Contributing
+* Author
+* License
 
 ---
 
 # 📌 Project Overview
 
-This project provides a secure REST API for managing personal todos.
+The Todo Application API is a secure backend service that allows users to manage their personal tasks.
 
-Users can:
+Every user has their own account and can securely perform CRUD operations on their own todos using JWT authentication.
 
-* Register an account
-* Login securely
-* Authenticate using JWT
-* Create todos
-* View their own todos
-* Update todos
-* Delete todos
+The project follows a clean layered architecture that separates routing, controllers, business logic, validation, middleware, and database operations.
 
-The application follows a layered architecture to keep business logic, routing, validation, and database operations separate and maintainable.
+This repository is built to demonstrate production-style backend development using JavaScript and Express.js.
 
 ---
 
 # ✨ Features
 
-## Authentication
+## User Authentication
 
 * User Registration
 * User Login
 * Password Hashing using bcrypt
 * JWT Authentication
 * Protected Routes
+* Token Verification
 
 ---
 
 ## Todo Management
 
 * Create Todo
-* View All Todos
-* View Single Todo
+* Get All Todos
+* Get Todo by ID
 * Update Todo
 * Delete Todo
 
@@ -70,57 +80,68 @@ The application follows a layered architecture to keep business logic, routing, 
 
 * Request Validation
 * Input Sanitization
-* Error Messages
+* Proper Validation Errors
+* Express Validator Integration
 
 ---
 
 ## Security
 
 * Password Hashing
-* JWT Tokens
+* JWT Authentication
 * Environment Variables
-* Protected API Routes
+* Helmet Security
+* Compression
+* CORS
+* Protected APIs
 
 ---
 
-## Production Practices
+## Production Features
 
 * MVC Architecture
+* Service Layer
 * Centralized Error Handling
-* Reusable Middleware
+* Environment Configuration
+* Modular Routing
 * Consistent API Responses
-* Clean Folder Structure
 
 ---
 
-# 🛠 Technology Stack
+# 🛠 Tech Stack
 
-### Backend
+## Backend
 
 * Node.js
 * Express.js
 
-### Database
+## Database
 
 * MongoDB
 * Mongoose
 
-### Authentication
+## Authentication
 
-* JSON Web Token (JWT)
+* JWT
 * bcrypt
 
-### Validation
+## Validation
 
 * express-validator
 
-### Development Tools
+## Documentation
+
+* Swagger UI
+* OpenAPI
+
+## Development Tools
 
 * Nodemon
 * dotenv
 * Git
 * GitHub
-* Postman / Bruno
+* Postman
+* Bruno
 
 ---
 
@@ -130,85 +151,110 @@ The application follows a layered architecture to keep business logic, routing, 
 todo-application/
 │
 ├── backend/
-│   │
-│   ├── src/
-│   │   │
-│   │   ├── config/
-│   │   │     └── db.js
-│   │   │
-│   │   ├── controllers/
-│   │   │     ├── authController.js
-│   │   │     └── todoController.js
-│   │   │
-│   │   ├── middleware/
-│   │   │     ├── auth.js
-│   │   │     ├── errorHandler.js
-│   │   │     └── validate.js
-│   │   │
-│   │   ├── models/
-│   │   │     ├── User.js
-│   │   │     └── Todo.js
-│   │   │
-│   │   ├── routes/
-│   │   │     ├── auth.js
-│   │   │     ├── todo.js
-│   │   │     └── index.js
-│   │   │
-│   │   ├── services/
-│   │   │
-│   │   ├── validations/
-│   │   │     ├── authValidation.js
-│   │   │     └── todoValidation.js
-│   │   │
-│   │   ├── utils/
-│   │   │     ├── jwt.js
-│   │   │     └── ApiResponse.js
-│   │   │
-│   │   ├── app.js
-│   │   └── server.js
-│   │
-│   ├── package.json
-│   ├── .env
-│   ├── .env.example
-│   └── README.md
 │
-└── frontend/
+├── src/
+│   │
+│   ├── config/
+│   │     db.js
+│   │
+│   ├── controllers/
+│   │     authController.js
+│   │     todoController.js
+│   │
+│   ├── middleware/
+│   │     auth.js
+│   │     errorHandler.js
+│   │     validate.js
+│   │
+│   ├── models/
+│   │     User.js
+│   │     Todo.js
+│   │
+│   ├── routes/
+│   │     auth.js
+│   │     todo.js
+│   │     index.js
+│   │
+│   ├── services/
+│   │
+│   ├── validations/
+│   │
+│   ├── utils/
+│   │     jwt.js
+│   │     ApiResponse.js
+│   │
+│   ├── app.js
+│   └── server.js
+│
+├── .env
+├── .env.example
+├── package.json
+└── README.md
 ```
 
 ---
 
-# 🏗 Architecture
+# 🏗 System Architecture
 
 ```text
-Client
-   │
-   ▼
-Routes
-   │
-   ▼
-Controllers
-   │
-   ▼
-Services
-   │
-   ▼
-Models
-   │
-   ▼
-MongoDB
+                Client
+                   │
+                   ▼
+              Express Routes
+                   │
+                   ▼
+              Controllers
+                   │
+                   ▼
+               Services
+                   │
+                   ▼
+                Models
+                   │
+                   ▼
+               MongoDB
 ```
 
-### Responsibilities
+---
 
-| Layer       | Responsibility                             |
-| ----------- | ------------------------------------------ |
-| Routes      | API endpoints                              |
-| Controllers | Handle request and response                |
-| Services    | Business logic                             |
-| Models      | Database interaction                       |
-| Middleware  | Authentication, validation, error handling |
-| Utils       | Helper functions                           |
-| Config      | Database configuration                     |
+# 🗄 Database Schema
+
+## User
+
+```javascript
+{
+    username: String,
+    email: String,
+    password: String,
+    createdAt: Date,
+    updatedAt: Date
+}
+```
+
+---
+
+## Todo
+
+```javascript
+{
+    title: String,
+    description: String,
+    completed: Boolean,
+    priority: String,
+    user: ObjectId,
+    createdAt: Date,
+    updatedAt: Date
+}
+```
+
+Relationship
+
+```text
+One User
+     │
+     │
+     ├──────────────► Many Todos
+```
 
 ---
 
@@ -216,40 +262,69 @@ MongoDB
 
 ## Authentication
 
-| Method | Endpoint              | Description   |
-| ------ | --------------------- | ------------- |
-| POST   | `/api/v1/auth/signup` | Register user |
-| POST   | `/api/v1/auth/login`  | Login user    |
+| Method | Endpoint            | Description   |
+| ------ | ------------------- | ------------- |
+| POST   | /api/v1/auth/signup | Register User |
+| POST   | /api/v1/auth/login  | Login User    |
 
 ---
 
 ## Todos
 
-| Method | Endpoint            | Description     |
-| ------ | ------------------- | --------------- |
-| GET    | `/api/v1/todos`     | Get all todos   |
-| GET    | `/api/v1/todos/:id` | Get single todo |
-| POST   | `/api/v1/todos`     | Create todo     |
-| PATCH  | `/api/v1/todos/:id` | Update todo     |
-| DELETE | `/api/v1/todos/:id` | Delete todo     |
+| Method | Endpoint          | Description   |
+| ------ | ----------------- | ------------- |
+| GET    | /api/v1/todos     | Get All Todos |
+| GET    | /api/v1/todos/:id | Get Todo      |
+| POST   | /api/v1/todos     | Create Todo   |
+| PATCH  | /api/v1/todos/:id | Update Todo   |
+| DELETE | /api/v1/todos/:id | Delete Todo   |
+
+---
+
+# 🔑 Authentication Flow
+
+```text
+User Login
+      │
+      ▼
+Verify Credentials
+      │
+      ▼
+Generate JWT Token
+      │
+      ▼
+Return Token
+      │
+      ▼
+Client Stores Token
+      │
+      ▼
+Authorization Header
+
+Bearer <token>
+
+      │
+      ▼
+Protected Routes
+```
 
 ---
 
 # ⚙ Installation
 
-Clone the repository
+Clone Repository
 
 ```bash
 git clone git@github.com:harshitd99/todo-application.git
 ```
 
-Move into the project
+Navigate
 
 ```bash
 cd todo-application/backend
 ```
 
-Install dependencies
+Install Dependencies
 
 ```bash
 npm install
@@ -259,7 +334,7 @@ npm install
 
 # 🔐 Environment Variables
 
-Create a `.env` file.
+Create a `.env` file inside the backend directory.
 
 ```env
 PORT=5000
@@ -287,84 +362,167 @@ npm start
 
 ---
 
-# 📈 Development Roadmap
+# 📨 Sample Request
 
-* [x] Project Setup
-* [x] MongoDB Connection
-* [x] User Model
-* [x] Signup API
-* [x] Login API
-* [x] JWT Authentication
-* [x] Authentication Middleware
-* [x] Todo Model
-* [x] Create Todo API
-* [x] Get Todos API
-* [x] Update Todo API
-* [x] Delete Todo API
-* [x] Request Validation
-* [ ] Centralized Error Handling
-* [ ] API Documentation
-* [ ] Rate Limiting
-* [ ] Helmet Security
-* [ ] CORS Configuration
-* [ ] Docker Support
-* [ ] Swagger Documentation
-* [ ] Unit Testing
-* [ ] CI/CD Pipeline
+## Signup
+
+### Request
+
+```http
+POST /api/v1/auth/signup
+```
+
+```json
+{
+    "username":"john",
+    "email":"john@example.com",
+    "password":"Password123"
+}
+```
+
+---
+
+### Response
+
+```json
+{
+    "success":true,
+    "message":"User registered successfully",
+    "data":{
+        "id":"...",
+        "username":"john",
+        "email":"john@example.com"
+    }
+}
+```
+
+---
+
+# ❌ Error Response
+
+```json
+{
+    "success":false,
+    "message":"Validation Failed",
+    "errors":[
+        {
+            "field":"email",
+            "message":"Invalid Email"
+        }
+    ]
+}
+```
+
+---
+
+# 🔒 Security Features
+
+* Password Hashing using bcrypt
+* JWT Authentication
+* Environment Variable Protection
+* Helmet Middleware
+* Compression Middleware
+* Request Validation
+* Centralized Error Handling
+
+---
+
+# 📈 Development Progress
+
+| Feature                    | Status |
+| -------------------------- | ------ |
+| Project Setup              | ✅      |
+| MongoDB Connection         | ✅      |
+| User Authentication        | ✅      |
+| JWT Middleware             | ✅      |
+| Todo CRUD                  | ✅      |
+| Request Validation         | ✅      |
+| Centralized Error Handling | ✅      |
+| Helmet                     | ✅      |
+| Compression                | ✅      |
+| Swagger Documentation      | ✅      |
+| Docker                     | ⏳      |
+| Unit Testing               | ⏳      |
+| CI/CD                      | ⏳      |
 
 ---
 
 # 🧪 Testing
 
-API endpoints can be tested using:
+The API can be tested using:
 
 * Postman
 * Bruno
 * Thunder Client
-
-Every endpoint should be verified before moving to the next feature.
+* Swagger UI
 
 ---
 
 # 🚀 Future Improvements
 
-* Refresh Token Authentication
+* Refresh Tokens
 * Email Verification
 * Password Reset
-* File Uploads
-* Search & Filter Todos
+* Search Todos
 * Pagination
 * Sorting
-* Role-Based Authorization
-* Redis Caching
+* File Uploads
+* Role Based Authorization
+* Redis Cache
 * Docker Compose
-* Kubernetes Deployment
+* Kubernetes
+* Unit Testing
+* Integration Testing
 * GitHub Actions CI/CD
-* Logging with Winston/Morgan
-* API Versioning
-* OpenAPI (Swagger)
+* Logging
+* Monitoring
 
 ---
 
-# 🎯 Learning Outcomes
+# 🤝 Contributing
 
-This project demonstrates understanding of:
+1. Fork the repository.
+
+2. Create a new branch.
+
+```bash
+git checkout -b feature/new-feature
+```
+
+3. Commit changes.
+
+```bash
+git commit -m "Add new feature"
+```
+
+4. Push the branch.
+
+```bash
+git push origin feature/new-feature
+```
+
+5. Open a Pull Request.
+
+---
+
+# 📚 Learning Objectives
+
+This project demonstrates knowledge of:
 
 * REST API Design
 * Express.js
 * MongoDB
-* Mongoose ODM
+* Mongoose
 * JWT Authentication
 * Password Hashing
-* Request Validation
+* Validation
 * Middleware
-* MVC Architecture
-* Service Layer Pattern
 * Error Handling
-* Environment Variables
+* Clean Architecture
+* Service Layer Pattern
+* API Documentation
 * Git & GitHub Workflow
-* Clean Code Principles
-* Production Backend Structure
+* Production Backend Development
 
 ---
 
@@ -372,12 +530,12 @@ This project demonstrates understanding of:
 
 **Harshit Dubey**
 
-GitHub: https://github.com/harshitd99
+GitHub: **https://github.com/harshitd99**
 
 ---
 
 # 📄 License
 
-This project is intended for educational purposes and personal learning.
+This project is licensed under the MIT License.
 
-Feel free to fork the repository, experiment with it, and build upon it.
+Feel free to fork, learn from, and contribute to this project.
