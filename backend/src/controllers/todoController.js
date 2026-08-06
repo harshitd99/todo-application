@@ -1,6 +1,6 @@
 const Todo = require("../models/Todo");
 
-const createTodo = async (req, res) => {
+const createTodo = async (req, res, next) => {
     try {
         const todo = await Todo.create({
             ...req.body,
@@ -13,17 +13,12 @@ const createTodo = async (req, res) => {
             data: todo
         });
 
-    } catch (error) {
-        console.error(error);
-
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
+    } catch (err) {
+        next(err);
     }
 };
 
-const getTodos = async (req, res) => {
+const getTodos = async (req, res, next) => {
     try {
         const todos = await Todo.find({
             owner: req.user.id
@@ -37,17 +32,13 @@ const getTodos = async (req, res) => {
             data: todos
         });
 
-    } catch (error) {
-        console.error(error);
-
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
+    }
+    catch(err){
+        next(err);
     }
 };
 
-const updateTodo = async (req, res) => {
+const updateTodo = async (req, res, next) => {
     try {
         const todo = await Todo.findOneAndUpdate(
             {
@@ -74,17 +65,13 @@ const updateTodo = async (req, res) => {
             data: todo
         });
 
-    } catch (error) {
-        console.error(error);
-
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
+    }
+    catch(err){
+        next(err);
     }
 };
 
-const deleteTodo = async (req, res) => {
+const deleteTodo = async (req, res, next) => {
     try {
         const todo = await Todo.findOneAndDelete({
             _id: req.params.id,
@@ -103,13 +90,9 @@ const deleteTodo = async (req, res) => {
             message: "Todo deleted successfully"
         });
 
-    } catch (error) {
-        console.error(error);
-
-        return res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
+    }
+    catch(err){
+        next(err);
     }
 };
 
